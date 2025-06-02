@@ -18,24 +18,17 @@ public class StackBasedOnArray <T> {
 
     }
 
-    private boolean Empty () {
-      return top == -1 ;
-    }
-    private boolean Full () {
-      return top == maxSize ;
-    }
-
     public boolean isFull() {
-        return Full();
+         return top == maxSize ;
     }
 
     public boolean isEmpty() {
-        return Empty();
+        return top == -1 ;
     }
 
     public void push  (T element) {                            // This method to add new element to Stack :
        try {
-           if (Full())
+           if (isFull())
                System.out.println("The Stack is Full on push...!");
            else {
                top++;
@@ -47,7 +40,7 @@ public class StackBasedOnArray <T> {
     }
 
     public T pop() {
-        if (Empty()) {
+        if (isEmpty()) {
             System.out.println("There's No element In Stack To Pop...!");
             return null;
         } else {
@@ -55,14 +48,14 @@ public class StackBasedOnArray <T> {
         }
     }
     public void getTop() {
-        if (Empty()) {
+        if (isEmpty()) {
             System.out.println("There's No Element...!");
         }else
             System.out.println("Top Of Stack Is : "+arr[top]);
     }
 
     public void display() {
-        if (Empty()) {
+        if (isEmpty()) {
             System.out.println("The Stack is Empty On Display...!");
         } else {
             System.out.print("The Stack is: [ ");
@@ -90,7 +83,7 @@ public class StackBasedOnArray <T> {
     }
 
     public void printWithIndex() { // just for learning
-        if (Empty()) {
+        if (isEmpty()) {
             System.out.println("Stack is empty.");
         } else {
             System.out.println("Stack contents with index:");
@@ -99,6 +92,7 @@ public class StackBasedOnArray <T> {
             }
         }
     }
+    
     private void resize() {  // For dynamic resize
         maxSize *= 2;
         arr = Arrays.copyOf(arr, maxSize);
